@@ -1,0 +1,33 @@
+apiVersion: apps/v1
+kind: Deployment
+
+metadata:
+  name: employee-service-portal
+
+spec:
+
+  replicas: 5
+
+  selector:
+    matchLabels:
+      app: employee-service-portal
+
+  template:
+
+    metadata:
+      labels:
+        app: employee-service-portal
+
+    spec:
+
+      containers:
+
+      - name: employee-service-portal
+
+        image: employee-service-portal:4
+
+        imagePullPolicy: IfNotPresent
+
+        ports:
+
+        - containerPort: 80
