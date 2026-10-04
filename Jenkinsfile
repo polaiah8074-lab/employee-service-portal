@@ -5,12 +5,14 @@ pipeline {
     }
     stages {
         stage('Build') {
-            steps {
-                sh 'docker build -t employee-service-portal:$BUILD_NUMBER .'
-            }
+           steps {
+              bat 'docker build -t employee-service-portal:%BUILD_NUMBER% .'
+             }
         }
         stage('Deploy') {
-            steps { echo "Deploying to ${params.ENVIRONMENT}" }
+            steps { 
+                echo "Deploying to ${params.ENVIRONMENT}" 
+            }
         }
     }
 }
